@@ -13,7 +13,7 @@ int i;
 for (i = 0; s[i] != 00; i++)
 {
 if (s[i] == c)
-{	
+{
 return (s + i);
 }
 if (s[i + 1] == c)
