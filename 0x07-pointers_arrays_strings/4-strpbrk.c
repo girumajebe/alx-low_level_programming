@@ -1,22 +1,27 @@
 #include "holberton.h"
+
 /**
- * _strbrk - search 's'
+ * _strpbrk - find character in text
  * @s: string
- * @accept: search
- * Return: char found
+ * @accept: character to search
+ * Return: char
  */
 char *_strpbrk(char *s, char *accept)
 {
-int i;
+int a, b;
 
-for (; *s; s++)
+for (a = 0 ; *(s + a) ; a++)
 {
-for (i = 0; accept[i]; i++)
+for (b = 0 ; *(accept + b) ; b++)
 {
-if (*s == accept[i])
+if (*(accept + b) == s[a])
 {
-return (s)	  
+return (s + a);
 }
+}
+if (*(accept + b) == s[a])
+{
+return (s + a);
 }
 }
 return (0);

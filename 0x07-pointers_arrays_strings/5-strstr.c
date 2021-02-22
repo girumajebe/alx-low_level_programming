@@ -25,5 +25,4 @@ return (duplicate);
 haystack++;
 }
 return (0)
-
 }
