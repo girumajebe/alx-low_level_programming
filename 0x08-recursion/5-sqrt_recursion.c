@@ -11,7 +11,7 @@ if ((b * b) > a)
 {
 return (-1);
 }
-if ((b * b) == a)    
+if ((b * b) == a)
 {
 return (b);
 }
@@ -36,5 +36,3 @@ else
 return (-1);
 }
 }
-
-
