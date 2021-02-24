@@ -1,7 +1,9 @@
-iassed number
-* @n: passed number
-* Return: Factor of n
-**/
+#include "holberton.h"
+/**
+ * factorial - check a factorial of a passed number
+ * @n: passed number
+ * Return: Factor of n
+ **/
 int factorial(int n)
 {
 if (n > 0)
