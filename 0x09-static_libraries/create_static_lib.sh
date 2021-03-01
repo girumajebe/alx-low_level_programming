@@ -1,4 +1,2 @@
 #!/bin/bash
-gcc -c *.c
-ar -rc liball.a *.o
-ranlib libutil.a
+(gcc -g -O -c *.c) ; (ar rc liball.a *.o)
