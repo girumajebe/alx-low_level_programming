@@ -1,56 +1,41 @@
-#include "holberton.h"
-#include <stdio.h>
 #include <stdlib.h>
-/**
- * _strlen - check the length of a string
- * @str: pointer type char
- * Return: The program will return the length of a string
- **/
-int  _strlen(char *str)
-{
-int i;
 
-for (i = 0; str[i] != 00; i++)
-{
-}
-return (i);
-}
 /**
- * str_concat - This funcion will concatenate two strings
- * @s1: String 1
- * @s2: String 2
- * Return: Result of concatenate s1, s2 and null terminated
- **/
+ * str_concat - concatenate two strings.
+ * @s1: string
+ * @s2: string
+ * Return: pointer or null
+ */
 char *str_concat(char *s1, char *s2)
 {
-char *ptr;
-int len_s1, len_s2, m, i, o;
+int i, j, l1, l2;
+char *newtxt1, *newtxt2;
 
+l1 = 0;
+l2 = 0;
+i = 0;
+j = 0;
 if (s1 == NULL)
-{
 s1 = "";
-}
 if (s2 == NULL)
-{
 s2 = "";
-}
-
-len_s1 = _strlen(s1);
-len_s2 = _strlen(s2);
-ptr = malloc(((len_s1) + (len_s2) + 1) * sizeof(char));
-
-if (ptr == NULL)
-{
+while (s1[l1] != '\0')
+l1++;
+while (s2[l2] != '\0')
+l2++;
+newtxt1 = (char *) malloc(sizeof(char) * (l1 + l2 + 1));
+newtxt2 = newtxt1;
+if (newtxt1 == NULL)
 return (NULL);
-}
-
-for (m = 0; m < len_s1; m++)
+while (i < l1)
 {
-ptr[m] = s1[m];
+newtxt1[i] = s1[i];
+i++;
 }
-for (i = len_s1, o = 0; o <= len_s2; i++, o++)
+while (j <= l2 + 1)
 {
-ptr[i] = s2[o];
+newtxt1[i] = s2[j];
+j++, i++;
 }
-return (ptr);
+return (newtxt2);
 }
