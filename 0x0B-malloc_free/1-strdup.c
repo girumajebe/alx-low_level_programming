@@ -1,48 +1,32 @@
-#include "holberton.h"
-#include <stdio.h>
 #include <stdlib.h>
-/**
- * _strlen - check the length of a string
- * @str: pointer type char
- * Return: The program will return the length of a string
- **/
-int  _strlen(char *str)
-{
-int i;
 
-for (i = 0; str[i] != 00; i++)
-    {
-}
-return (i);
-}
 /**
- * _strdup - copy an string
- * @str: pointer char type
- * Return: String copied
- **/
+ * _strdup - return a pointer with copy
+ *
+ * @str: string
+ * Return: pointer
+ */
 char *_strdup(char *str)
 {
-char *a;
-int m;
-int n;
+char *copyStr;
+int a, b;
 
+a = 0;
+b = 0;
 if (str == NULL)
+return (NULL);
+while (str[a] != '\0')
+a++;
+copyStr = (char *)malloc((a + 1) * sizeof(char));
+if (copyStr == NULL)
 {
 return (NULL);
 }
-else
+while (str[b] != '\0')
 {
-m = _strlen(str);
-a = (char *)malloc(m * sizeof(char) + 1);
-if (a == NULL)
-{
-return (0);
+copyStr[b] = str[b];
+b++;
 }
-for (n = 0; str[n] != '\0'; n++)
-{
-a[n] = str[n];
-}
-return (a);
-}
-free(a);
+copyStr[b] = '\0';
+return (copyStr);
 }
