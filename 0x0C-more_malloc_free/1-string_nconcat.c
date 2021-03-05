@@ -1,42 +1,50 @@
-include "holberton.h"
 #include <stdlib.h>
 
 /**
- * string_nconcat - concatenates two strings.
- * @s1: first string to copy
- * @s2: second string to copy
- * @n: number of bytes of s2 to copy
- *
- * Return: char pointer to newly allocated place in memory
+ * searchSizek - search the size
+ * @s: string
+ * @n: size of string s2
+ * @typ: string 1 -> 1, string 2 -> 2
+ * Return: size
+ */
+unsigned int searchSizek(char *s, unsigned int n, int typ)
+{
+unsigned int l;
+
+if (s == NULL)
+s = "";
+for (l = 0; s[l] != '\0'; l++)
+;
+if (n < l && typ == 2)
+l = l - (l - n);
+return (l);
+}
+/**
+ * string_nconcat - concatenate 2 string with limit
+ * @s1: string
+ * @s2: string
+ * @n: size of string s2
+ * Return: pointer
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-unsigned int i, j, k;
-char *s;
+char *newStr;
+unsigned int i, j;
+unsigned int l1 = 0;
+unsigned int l2 = 0;
 
-if (s1 == NULL)
-i = 0;
-else
+l1 = searchSizek(s1, n, 1);
+l2 = searchSizek(s2, n, 2);
+newStr = malloc(sizeof(char) * (l1 + l2 + 1));
+if (newStr == NULL)
 {
-for (i = 0; s1[i]; i++)
-;
-}
-if (s2 == NULL)
-j = 0;
-else
-{
-for (j = 0; s2[j]; j++)
-;
-}
-if (j > n)
-j = n;
-s = malloc(sizeof(char) * (i + j + 1));
-if (s == NULL)
+free(newStr);
 return (NULL);
-for (k = 0; k < i; k++)
-s[k] = s1[k];
-for (k = 0; k < j; k++)
-s[k + i] = s2[k];
-s[i + j] = '\0';
-return (s);
+}
+for (i = 0; i < l1; i++)
+newStr[i] = s1[i];
+for (j = 0; j < l2; j++, i++)
+newStr[i] = s2[j];
+newStr[i] = '\0';
+return (newStr);
 }
