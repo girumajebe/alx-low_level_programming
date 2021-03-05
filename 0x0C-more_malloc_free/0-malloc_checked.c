@@ -1,18 +1,19 @@
-#include "holberton.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 /**
- * malloc_checked - allocates memory using malloc
- * @b : the size of memory to print
- *
- * Return: Nothing.
+ * malloc_checked - test malloc
+ * @b: bytes
+ * Return: 98 if fail
  */
 void *malloc_checked(unsigned int b)
 {
-void *ptr = malloc(b);
-
-if (ptr == NULL)
+void *tmp;
+tmp = malloc(b);
+if (tmp == NULL)
+{
+free(tmp);
 exit(98);
-return (ptr);
+}
+return (tmp);
 }
