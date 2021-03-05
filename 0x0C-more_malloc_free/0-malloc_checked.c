@@ -1,18 +1,18 @@
 #include "holberton.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
  * malloc_checked - allocates memory using malloc
- * @b: memory to allocate
+ * @b : the size of memory to print
  *
- * Return: pointer to allocated memory or normal process termination if error
+ * Return: Nothing.
  */
 void *malloc_checked(unsigned int b)
 {
-void *p;
+void *ptr = malloc(b);
 
-p = malloc(b);
-if (p == NULL)
+if (ptr == NULL)
 exit(98);
-return (p);
+return (ptr);
 }
