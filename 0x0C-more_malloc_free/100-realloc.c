@@ -1,46 +1,40 @@
+#include "holberton.h"
 #include <stdlib.h>
 
 /**
- *_realloc - realloc but with malloc
- * @newP: new pointer created with malloc
- * @ptr: pointer created with malloc
- * @new_size: is the new size
- */
-void copyPasteK(char *newP, void *ptr, unsigned int new_size)
-{
-unsigned int i = 0;
-
-while (i < new_size)
-{
-*((char *)newP + i) = *((char *)ptr + i);
-i++;
-}
-}
-
-/**
- * _realloc - realloc but with malloc
- * @ptr: pointer created with malloc
- * @old_size: used space
- * @new_size: is the new size
- * Return: pointer
+ * _realloc - reallocates a memory block using malloc and free.
+ * @ptr: pointer to previously allocated memory
+ * @old_size: size of allocated space for ptr
+ * @new_size: size of newly allocated space
+ *
+ * Return: pointer to newly allocated memory, or NULL if failure
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-void *newP;
+char *p;
+unsigned int i, max = new_size;
+char *oldp = ptr;
 
 if (ptr == NULL)
-return (malloc(new_size));
-if (new_size == old_size)
-return (ptr);
-if (new_size == 0 && ptr != NULL)
+{
+p = malloc(new_size);
+return (p);
+}
+else if (new_size == 0)
 {
 free(ptr);
 return (NULL);
 }
-newP = malloc(new_size);
-if (newP == NULL)
+else if (new_size == old_size)
+return (ptr);
+
+p = malloc(new_size);
+if (p == NULL)
 return (NULL);
-copyPasteK(newP, ptr, new_size);
+if (new_size > old_size)
+max = old_size;
+for (i = 0; i < max; i++)
+p[i] = oldp[i];
 free(ptr);
-return (newP);
+return (p);
 }
