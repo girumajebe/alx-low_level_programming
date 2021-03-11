@@ -1,31 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "3-calc.h"
 
 /**
- * main - operate numbers
- * @argc: #arguments
- * @argv: arguments
+ * main - performs simple operations
+ * @argc: number of arguments passed
+ * @argv: array of pointers to arguments
  *
- * Return: 0
+ * Return: always 0
  */
-
 int main(int argc, char *argv[])
 {
-int resp;
-int limit = 4;
+int a, b, c;
+int (*f)(int, int);
 
-if (argc != limit)
+if (argc != 4)
 {
-/**insufficient arguments*/
 printf("Error\n");
 exit(98);
 }
-if (!get_op_func(argv[2]))
+a = atoi(argv[1]);
+b = atoi(argv[3]);
+f = get_op_func(argv[2]);
+if (f == NULL)
 {
-/**bad arguments*/
 printf("Error\n");
-exit(100);
+exit(99);
 }
-resp = get_op_func(argv[2])(atoi(argv[1]), atoi(argv[3]));
-printf("%d\n", resp);
+c = f(a, b);
+printf("%d\n", c);
 return (0);
 }
