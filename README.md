@@ -67,5 +67,3 @@ and more!
 29. [0x1C-binary_trees](./0x1C-binary_trees)
 30. [0x1D-search_algorithms](./0x1D-search_algorithms) ** Search algorithms project **
 
-## Credits
-Work is owned and maintained by Alexa Orrico ([@alexaorrico](https://twitter.com/alexaorrico)). Credits for group projects are displayed in the respective README.md files.
